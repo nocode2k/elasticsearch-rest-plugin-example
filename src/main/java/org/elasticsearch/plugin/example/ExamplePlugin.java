@@ -1,5 +1,9 @@
 package org.elasticsearch.plugin.example;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Supplier;
+
 import org.elasticsearch.cluster.metadata.IndexNameExpressionResolver;
 import org.elasticsearch.cluster.node.DiscoveryNodes;
 import org.elasticsearch.common.settings.ClusterSettings;
@@ -11,21 +15,16 @@ import org.elasticsearch.plugins.Plugin;
 import org.elasticsearch.rest.RestController;
 import org.elasticsearch.rest.RestHandler;
 
-import java.util.List;
-import java.util.function.Supplier;
-
-import static java.util.Collections.singletonList;
-
 public class ExamplePlugin extends Plugin implements ActionPlugin {
     @Override
     public List<RestHandler> getRestHandlers(final Settings settings,
-                                             final RestController restController,
-                                             final ClusterSettings clusterSettings,
-                                             final IndexScopedSettings indexScopedSettings,
-                                             final SettingsFilter settingsFilter,
-                                             final IndexNameExpressionResolver indexNameExpressionResolver,
-                                             final Supplier<DiscoveryNodes> nodesInCluster) {
-
-        return singletonList(new ExampleNocodeAction(settings, restController));
+        final RestController restController,
+        final ClusterSettings clusterSettings,
+        final IndexScopedSettings indexScopedSettings,
+        final SettingsFilter settingsFilter,
+        final IndexNameExpressionResolver indexNameExpressionResolver,
+        final Supplier<DiscoveryNodes> nodesInCluster) {
+        return Arrays.asList(
+            new ExampleNocodeAction(settings, restController));
     }
 }
