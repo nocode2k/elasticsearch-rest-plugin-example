@@ -1,4 +1,4 @@
-# elasticsearch-plugin-example
+# elasticsearch-rest-plugin-example
 ## Examples for developing ❝Elasticsearch plugin❞
 
 ## Environment
